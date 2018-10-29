@@ -16,6 +16,7 @@ object Versions {
     val mockwebserver = "3.11.0"
     val aws = "1.11.380"
     val logging = "1.5.4"
+    val libgdx = "1.9.8"
 }
 
 object Libraries {
@@ -50,5 +51,12 @@ object Libraries {
         val s3 = "com.amazonaws:aws-java-sdk-s3:${Versions.aws}"
         val sqs = "com.amazonaws:aws-java-sdk-sqs:${Versions.aws}"
         val sns = "com.amazonaws:aws-java-sdk-sns:${Versions.aws}"
+    }
+
+    object libgdx {
+        val gdx = "com.badlogicgames.gdx:gdx:${Versions.libgdx}"
+        val lwjgl3 = "com.badlogicgames.gdx:gdx-backend-lwjgl3:${Versions.libgdx}"
+        val nativesDesktop = "com.badlogicgames.gdx:gdx-platform:${Versions.libgdx}:natives-desktop"
+        val tools = "com.badlogicgames.gdx:gdx-tools:${Versions.libgdx}"
     }
 }
