@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     java
     jacoco
-    findbugs
     kotlin("jvm") version Versions.kotlin
 }
 
@@ -23,12 +22,16 @@ configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
 }
 
-java.sourceSets["main"].java {
-    setSrcDirs(listOf("src"))
+sourceSets.main {
+    java {
+        setSrcDirs(listOf("src"))
+    }
 }
 
-java.sourceSets["test"].java {
-    setSrcDirs(listOf("tst"))
+sourceSets.test {
+    java {
+        setSrcDirs(listOf("tst"))
+    }
 }
 
 tasks.withType<KotlinCompile> {
@@ -46,12 +49,6 @@ tasks.withType<JacocoCoverageVerification> {
     }
 }
 
-val fatJar = task("fatJar", type = Jar::class) {
-    baseName = "${project.name}-fat"
-    manifest {
-        attributes["Implementation-Version"] = version
-        attributes["Main-Class"] = mainClass
-    }
-    from(configurations.runtime.map { if (it.isDirectory) it else zipTree(it) })
-    with(tasks["jar"] as CopySpec)
+tasks.register<Jar>("fatjar") {
+    from(Callable { configurations["runtimeClasspath"].map { if (it.isDirectory) it else zipTree(it) } })
 }
