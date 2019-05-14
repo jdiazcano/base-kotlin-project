@@ -15,7 +15,9 @@ repositories {
 }
 
 dependencies {
-    compile(kotlin("stdlib-jdk8"))
+    compileBatch(Premade.kotlin)
+
+    compileBatch(Premade.logging)
 }
 
 configure<JavaPluginConvention> {
