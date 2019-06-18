@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     java
     jacoco
-    kotlin("jvm") version Versions.kotlin
+    kotlin("jvm") version Versions.jetbrains.kotlin
 }
 
 group = "com.jdiazcano"
