@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     java
     kotlin("jvm") version Versions.jetbrains.kotlin
-    `maven-publish`
 }
 
 baseProject(ProjectConfiguration(
